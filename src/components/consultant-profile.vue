@@ -58,7 +58,7 @@
           <v-col cols="4">
             <v-card class="pa-2" outlined tile>
               <v-img
-                  src="https://1000marcas.net/wp-content/uploads/2020/02/Harvard-Logo.png"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Ua_stack_rgb_svg.svg/1024px-Ua_stack_rgb_svg.svg.png"
                   height="100%"
                   width="100%"
               ></v-img>
@@ -90,7 +90,7 @@
           <v-col cols="4">
             <v-card class="pa-2" outlined tile>
               <v-img
-                  src="https://blog.adecco.com.mx/wp-content/uploads/2019/11/que-es-consultoria-empresarial.png"
+                  src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                   height="100%"
                   width="100%"
               ></v-img>
@@ -99,7 +99,7 @@
           <v-col cols="4">
             <v-card class="pa-2" outlined tile>
               <v-img
-                  src="https://smexterna.es/wp-content/uploads/2019/04/permisos-retributivos.jpg"
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                   height="100%"
                   width="100%"
               ></v-img>
@@ -108,7 +108,7 @@
           <v-col cols="4">
             <v-card class="pa-2" outlined tile>
               <v-img
-                  src="https://www.esan.edu.pe/conexion/actualidad/2019/04/23/1500x844_consultoria_ahorro.jpg"
+                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                   height="100%"
                   width="100%"
               ></v-img>
