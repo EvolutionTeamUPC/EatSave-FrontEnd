@@ -5,9 +5,9 @@
     </v-card-title>
     <div class="d-flex flex-column justify-space-between align-center">
       <v-img
-          src="https://image.freepik.com/vector-gratis/fachada-restaurante-estilo-plano_23-2147537370.jpg"
-          height="25%"
-          width="25%"
+          src="https://images.unsplash.com/photo-1642520314172-1355abfbd086?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          height="15%"
+          width="15%"
       ></v-img>
     </div>
     <v-card-text>
@@ -17,7 +17,7 @@
       Número telefónico: {{defaultItem.cellPhoneNumber}}
     </v-card-text>
     <v-col class="justify-center">
-      <v-btn color="#1bd698" dark class="mb-2" v-bind="attrs" v-on="on" @click="navigateToEditRestaurant(defaultItem.id)">
+      <v-btn color="#60626b" dark class="mb-2" v-bind="attrs" v-on="on" @click="navigateToEditRestaurant(defaultItem.id)">
         <v-icon>
           mdi-pencil
         </v-icon>
