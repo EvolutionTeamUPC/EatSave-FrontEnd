@@ -1,8 +1,21 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
-export default axios.create({
-    baseURL: 'https://eatsavewebapplication.azurewebsites.net/api',
-    headers: {
-        'Content-type': 'application/json'
+const buildHeader = () => {
+    const token = Cookies.get('token')
+    if (token) {
+        return {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
     }
+    return {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+    }
+}
+export default axios.create({
+    baseURL: 'http://localhost:8080/api',
+    headers: buildHeader()
 });

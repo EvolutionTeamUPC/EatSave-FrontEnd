@@ -1,6 +1,25 @@
 <template>
   <v-card>
-    <v-container class="grey lighten-5">
+    <v-container v-if="hasToken" class="grey lighten-5">
+      <v-row>
+        <v-col cols="12">
+          <h1>Welcome back! {{ user.firstName }}</h1>
+          <h2>Ventas en los ultimos 6 meses</h2>
+          <Bar
+            :chart-options="chartOptions"
+            :chart-data="chartData"
+            :chart-id="chartId"
+            :dataset-id-key="datasetIdKey"
+            :plugins="plugins"
+            :css-classes="cssClasses"
+            :styles="styles"
+            :width="width"
+            :height="height"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container class="grey lighten-5" v-else>
       <v-row>
         <v-col cols="12">
           <v-row>
@@ -9,9 +28,7 @@
               <v-img src="https://i.imgur.com/ir1wUSW.jpg" width="100%">
                 <v-row class="fill-height" align="center" justify="center">
                   <div class="display-2">
-                    <div class="outline-mod">
-                    EatSave
-                    </div>
+                    <div class="outline-mod">EatSave</div>
                     <v-spacer></v-spacer>
                     <p align="center" justify="center">
                       <v-btn color="#ffffff" @click="navigateToLogin">
@@ -162,8 +179,91 @@
 </template>
 
 <script>
+import SessionService from "@/services/session-service";
+import { Bar } from "vue-chartjs/legacy";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
 export default {
   name: "home",
+  components: { Bar },
+  data() {
+    return {
+      hasToken: false,
+      user: {},
+      chartData: {
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"],
+        datasets: [
+          {
+            data: [60, 45, 35, 40, 24, 30],
+            backgroundColor: "#FF6384",
+            label: "Ventas (Miles de S/.)",
+          },
+        ],
+      },
+      chartOptions: {
+        responsive: true,
+      },
+    };
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: "bar-chart",
+    },
+    datasetIdKey: {
+      type: String,
+      default: "label",
+    },
+    width: {
+      type: Number,
+      default: 400,
+    },
+    height: {
+      type: Number,
+      default: 400,
+    },
+    cssClasses: {
+      default: "",
+      type: String,
+    },
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    plugins: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  async beforeMount() {
+    const token = this.$cookie.get("token");
+    await SessionService.profile(token)
+      .then(({ data }) => {
+        delete data.password;
+        this.$cookie.set("user", JSON.stringify(data));
+        this.user = data;
+        this.hasToken = true;
+      })
+      .catch(() => {
+        this.hasToken = false;
+        this.$cookie.delete("token");
+      });
+  },
   methods: {
     navigateToHomeOwner() {
       this.$router.push({ name: "home-owner" });
@@ -179,14 +279,13 @@ export default {
 .rounded-img {
   border-radius: 100%;
 }
-.outline-mod{
+.outline-mod {
   -webkit-text-stroke: 1px;
   -webkit-text-stroke-color: #ffffff;
 }
 
-.custom-height{
+.custom-height {
   display: flex;
   flex-direction: column;
-
 }
 </style>
