@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app dark fixed color="#1BD698">
+    <v-app-bar app dark fixed color="#60626b">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-toolbar-title>EatSave</v-toolbar-title>
       <v-spacer></v-spacer>
