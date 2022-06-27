@@ -16,6 +16,6 @@ const buildHeader = () => {
     }
 }
 export default axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL:  process.env.VUE_APP_API_URL,
     headers: buildHeader()
 });
